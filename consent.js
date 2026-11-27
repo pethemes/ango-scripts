@@ -92,11 +92,19 @@
 
   var CSS = [
     '.ango-cc{--cc-bg:var(--_colors---main-background,#d6d6d6);--cc-fg:var(--_colors---text-color,#13120f);--cc-red:var(--_colors---red,#ed0a30);--cc-line:var(--_colors---border-color,#13120f1a);',
-    'position:fixed;left:30px;bottom:30px;z-index:2147483000;width:min(440px,calc(100vw - 60px));box-sizing:border-box;padding:24px;',
-    'background:var(--cc-bg);color:var(--cc-fg);border:1px solid var(--cc-fg);',
+    'position:fixed;left:30px;bottom:30px;z-index:2147483000;width:min(440px,calc(100vw - 60px));box-sizing:border-box;padding:30px;',
+    // Same surface as the site's .info-box cards: frosted white, soft shadow, 10px radius.
+    'background:#ffffff4d;-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border:1px solid #ffffff4d;border-radius:10px;box-shadow:0 5px 10px #0000000d;color:var(--cc-fg);',
     'font-family:var(--_typography---font-family--aeonik,Aeonik,Arial,sans-serif);font-size:15px;line-height:21px;',
     'opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}',
     '.ango-cc.is-visible{opacity:1;transform:none;pointer-events:auto}',
+    // Red corner brackets, same technique and values as .info-box::after in style.css.
+    '.ango-cc::after{--size:3em;--width:1px;--gap:.5em;--color:#ff4c24;content:"";position:absolute;inset:calc(var(--gap) * -1.5);z-index:1;font-size:16px;',
+    'padding:calc(var(--gap) + var(--width));outline:var(--width) solid var(--color);outline-offset:calc(var(--gap) / -1);border-radius:21px;pointer-events:none;opacity:0;',
+    '-webkit-mask:conic-gradient(at var(--size) var(--size),#0000 75%,#000 0) 0 0/calc(100% - var(--size)) calc(100% - var(--size)),linear-gradient(#000 0 0) content-box;',
+    'mask:conic-gradient(at var(--size) var(--size),#0000 75%,#000 0) 0 0/calc(100% - var(--size)) calc(100% - var(--size)),linear-gradient(#000 0 0) content-box;',
+    'transition:all .4s cubic-bezier(.65,.05,0,1) .1s}',
+    '.ango-cc.is-visible::after{opacity:1;--size:2em}',
     '.ango-cc *{box-sizing:border-box}',
     '.ango-cc__label{font-family:var(--_typography---font-family--aeonik-mono,"Aeonik Mono",monospace);font-size:11px;line-height:14px;text-transform:uppercase;color:var(--cc-red);margin:0 0 12px}',
     '.ango-cc__text{margin:0 0 20px}',
@@ -125,7 +133,7 @@
     '.ango-cc.is-prefs .ango-cc__save{display:flex}',
     '[data-cookie-settings]{cursor:pointer;font-family:var(--_typography---font-family--aeonik-mono,"Aeonik Mono",monospace);text-decoration:none;text-underline-offset:3px}',
     '[data-cookie-settings]:hover{text-decoration:underline}',
-    '@media (max-width:767px){.ango-cc{left:15px;right:15px;bottom:15px;width:auto;padding:20px}}',
+    '@media (max-width:767px){.ango-cc{left:20px;right:20px;bottom:20px;width:auto;padding:24px}}',
     '@media (max-width:479px){.ango-cc__actions{flex-direction:column}}',
     '@media (prefers-reduced-motion:reduce){.ango-cc,.ango-cc *{transition:none!important}}'
   ].join('');
