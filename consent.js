@@ -258,7 +258,35 @@
     return;
   }
 
-  function start() { setTimeout(function () { show(false); }, 800); }
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, { once: true });
+  // First visit: show the banner only after the page loader (.loading-screen) has finished.
+  // The loader timeline sets display:block while running and display:none at the end.
+  function whenLoaderDone(cb) {
+    var screen = document.querySelector('.loading-screen');
+    if (!screen || !document.querySelector('.loading-container')) {
+      if (document.readyState === 'complete') cb();
+      else window.addEventListener('load', cb, { once: true });
+      return;
+    }
+    var seen = false;
+    var done = false;
+    var observer = new MutationObserver(check);
+    var safety = setTimeout(finish, 15000); // never keep the banner hidden for long
+
+    function check() {
+      if (getComputedStyle(screen).display !== 'none') seen = true;
+      else if (seen) finish();
+    }
+    function finish() {
+      if (done) return;
+      done = true;
+      observer.disconnect();
+      clearTimeout(safety);
+      cb();
+    }
+
+    observer.observe(screen, { attributes: true, attributeFilter: ['style', 'class'] });
+    check();
+  }
+
+  whenLoaderDone(function () { setTimeout(function () { show(false); }, 400); });
 })();
