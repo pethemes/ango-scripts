@@ -123,7 +123,8 @@
     '.ango-cc__switch input:focus-visible+span,.ango-cc__btn:focus-visible,.ango-cc__more:focus-visible,.ango-cc a:focus-visible{outline:2px solid var(--cc-red);outline-offset:2px}',
     '.ango-cc__save{display:none}',
     '.ango-cc.is-prefs .ango-cc__save{display:flex}',
-    '[data-cookie-settings]{cursor:pointer}',
+    '[data-cookie-settings]{cursor:pointer;font-family:var(--_typography---font-family--aeonik-mono,"Aeonik Mono",monospace);text-decoration:none;text-underline-offset:3px}',
+    '[data-cookie-settings]:hover{text-decoration:underline}',
     '@media (max-width:767px){.ango-cc{left:15px;right:15px;bottom:15px;width:auto;padding:20px}}',
     '@media (max-width:479px){.ango-cc__actions{flex-direction:column}}',
     '@media (prefers-reduced-motion:reduce){.ango-cc,.ango-cc *{transition:none!important}}'
@@ -159,7 +160,7 @@
       '<p class="ango-cc__label" id="ango-cc-title">Cookies</p>',
       '<p class="ango-cc__text" id="ango-cc-text">Nous utilisons des cookies de mesure d’audience (Google Analytics, Microsoft Clarity) pour comprendre comment le site est utilisé et l’améliorer. Ils ne sont déposés qu’avec votre accord, que vous pouvez modifier à tout moment via « Paramètres des cookies » en bas de page.' + policy + '</p>',
       '<div class="ango-cc__prefs" id="ango-cc-prefs">',
-      '  <div class="ango-cc__row"><div><strong>Nécessaires</strong><small>Mémorisent votre choix sur ce bandeau. Toujours actifs.</small></div><span class="ango-cc__state">Toujours actifs</span></div>',
+      '  <div class="ango-cc__row"><div><strong>Nécessaires</strong><small>Mémorisent votre choix sur ce bandeau.</small></div><span class="ango-cc__state">Toujours actifs</span></div>',
       '  <div class="ango-cc__row"><div><strong id="ango-cc-analytics-label">Mesure d’audience</strong><small>Google Analytics et Microsoft Clarity : statistiques de visite et analyse de navigation.</small></div>',
       '  <label class="ango-cc__switch"><input type="checkbox" id="ango-cc-analytics" aria-labelledby="ango-cc-analytics-label"><span aria-hidden="true"></span></label></div>',
       '</div>',
